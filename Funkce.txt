@@ -1,0 +1,78 @@
+monitor na cas, napriklad monitorovani prehledu leciv tydenni davky
+nacteni swaggeru pro predvyplneni
+print pro test full req,res,status_code
+Break sequence on 400 500, abnormal error
+check for 20x 30x, load chyb ze swaggeru
+anomalie
+Data objekty s typy - Pydantic
+Urcite classess  - budu udrazovat podobne projekty, podobne routy,  + jednotliva volani
+Udelat produkcni , testovaci a dev conf
+Konfigurace
+
+
+
+To set up logging that works both in a basic Python application and in a Flask application, you can use Python's built-in `logging` module. This way, you can maintain consistent logging behavior across different versions of your application. Here's a step-by-step guide:
+
+### Step 1: Basic Python Application Logging
+
+First, let's set up logging in a basic Python application.
+
+```python
+import logging
+
+# Configure the logging
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    handlers=[logging.FileHandler("app.log"),
+                              logging.StreamHandler()])
+
+logger = logging.getLogger(__name__)
+
+def main():
+    logger.info("This is an info message from the basic Python application.")
+    logger.error("This is an error message from the basic Python application.")
+
+if __name__ == "__main__":
+    main()
+```
+
+### Step 2: Flask Application Logging
+
+Next, let's set up logging in a Flask application. We'll reuse the same logging configuration.
+
+```python
+from flask import Flask
+import logging
+
+app = Flask(__name__)
+
+# Configure the logging
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    handlers=[logging.FileHandler("app.log"),
+                              logging.StreamHandler()])
+
+logger = logging.getLogger(__name__)
+
+@app.route('/')
+def home():
+    logger.info("This is an info message from the Flask application.")
+    logger.error("This is an error message from the Flask application.")
+    return "Hello, Flask!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+### Explanation
+
+1. **Logging Configuration**: Both scripts configure logging using `logging.basicConfig()`. This sets the logging level, format, and handlers (file and console).
+2. **Logger**: A logger is created using `logging.getLogger(__name__)`. This logger is used to log messages in both the basic Python application and the Flask application.
+3. **Handlers**: The `FileHandler` writes logs to a file (`app.log`), and the `StreamHandler` outputs logs to the console.
+
+### Running the Applications
+
+- **Basic Python Application**: Run the script directly to see the logging in action.
+- **Flask Application**: Run the Flask application and access the root URL (`/`) to trigger the logging.
+
+This setup ensures that your logging configuration is consistent and works seamlessly in both a basic Python application and a Flask application. Let me know if you need any further customization or assistance!

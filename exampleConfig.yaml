@@ -1,0 +1,100 @@
+# projekt
+nazevProjektu: "test01"
+id: 1
+cert: false
+prostredi: "test"
+url: https://jsonplaceholder.typicode.com/
+jednotlive:
+  - id: 1
+    metoda: GET
+    nazev: posts
+    uri: posts
+    # nacteni idecka osoby z ciselnik v ciselniky
+    parameter: "/value1"
+  - id: 2
+    metoda: POST
+    nazev: posts
+    uri: posts
+    req:
+      title: mujPost
+      body: blabol
+      # nacteni idecka usera z ciselniku v ciselniky
+      userId: value1
+
+sekvence:
+  - id: 1
+    poradi: 1
+    metoda: POST
+    nazev: posts
+    uri: posts
+    req:
+      title: mujPost
+      body: blabol
+      # naxteni usera z ciselniku
+      userId: value1
+    # ulozi ID z response
+    res:
+      - id: vid
+  - id: 2
+    metoda: GET
+    nazev: posts
+    uri: posts
+    # nacteni idecka osoby z ciselnik v ciselniky
+    parameter: "/vid"
+    # opakovani get pro final response priklad
+    opakovani:
+      pocet: 5
+      #nebo
+      status: 20x
+      #nebo
+      res.status: ok
+  - id: 3
+    poradi: 3
+    metoda: PUT
+    nazev: posts
+    uri: posts
+    req:
+      #nacteni id z res krok1
+      id: vid
+      title: mujPost
+      body: blabol na druhou
+      #nateni user z ciselniku
+      userId: value1
+  - id: 4
+    poradi: 4
+    metoda: DELETE
+    nazev: posts
+    uri: posts/vid
+  - id: 5
+    poradi: 1
+    metoda: GET
+    nazev: comments k postu
+    uri: posts/vid/comments
+  - id: 6
+    poradi: 1
+    metoda: GET
+
+monitor:
+  server: localhost
+  odesilatel: franta.jetel@sukl.cz
+  emaily:
+    - tomas.hajek@sukl.cz
+      papa.novak@sukl.cz
+  pocetVad: 2
+  interval:
+    hodnota: 1
+    jendotka: hodina
+  jednotlive:
+    id: 1
+    metoda: GET
+    nazev: posts
+    uri: posts
+    # nacteni idecka osoby z ciselnik v ciselniky
+    parameter: "/value1"
+
+ciselniky:
+  value1:
+    method: get
+    URL: "https://jsonplaceholder.typicode.com/users"
+    atribut: id
+    pole: prvni
