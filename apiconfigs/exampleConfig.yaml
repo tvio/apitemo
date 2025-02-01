@@ -1,7 +1,8 @@
 # projekt
-nazevProjektu: "test01"
+nazev: "test01"
 id: 1
 cert: false
+# prostredi "dev" ,"test" ,"prod"
 prostredi: "test"
 url: https://jsonplaceholder.typicode.com/
 jednotlive:
@@ -10,7 +11,10 @@ jednotlive:
     nazev: posts
     uri: posts
     # nacteni idecka osoby z ciselnik v ciselniky
-    parameter: "/value1"
+    parametry:
+      - hodnota: "/value1"
+        typ: path
+
   - id: 2
     metoda: POST
     nazev: posts
@@ -40,14 +44,15 @@ sekvence:
     nazev: posts
     uri: posts
     # nacteni idecka osoby z ciselnik v ciselniky
-    parameter: "/vid"
+    parametery:
+      - hodnota: "/vid"
+        typ: path
     # opakovani get pro final response priklad
     opakovani:
       pocet: 5
       #nebo
-      status: 20x
-      #nebo
-      res.status: ok
+      #statusOk: true
+
   - id: 3
     poradi: 3
     metoda: PUT
