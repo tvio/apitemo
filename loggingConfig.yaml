@@ -6,17 +6,17 @@ formatters:
 handlers:
   console:
     class: logging.StreamHandler
-    level: DEBUG
+    level: INFO
     formatter: simple
     stream: ext://sys.stdout
   file:
     class: logging.FileHandler
-    level: DEBUG
+    level: INFO
     formatter: simple
     filename: logs/app.log
 loggers:
   my_logger:
-    level: DEBUG
+    level: INFO
     handlers: [console, file]
     propagate: no
 root:

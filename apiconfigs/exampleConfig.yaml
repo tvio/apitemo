@@ -1,6 +1,7 @@
 # projekt
 nazev: "test01"
 id: 1
+# v pripade cert true je to object s filename a password
 cert: false
 # prostredi "dev" ,"test" ,"prod"
 prostredi: "test"
@@ -12,7 +13,7 @@ jednotlive:
     uri: posts
     # nacteni idecka osoby z ciselnik v ciselniky
     parametry:
-      - hodnota: "/value1"
+      - hodnota: /$value1
         typ: path
 
   - id: 2
@@ -23,7 +24,7 @@ jednotlive:
       title: mujPost
       body: blabol
       # nacteni idecka usera z ciselniku v ciselniky
-      userId: value1
+      userId: $value1
 
 sekvence:
   - id: 1
@@ -38,21 +39,21 @@ sekvence:
       userId: value1
     # ulozi ID z response
     res:
-      - id: vid
+      id: $vid
   - id: 2
+    poradi: 2
     metoda: GET
     nazev: posts
     uri: posts
     # nacteni idecka osoby z ciselnik v ciselniky
-    parametery:
-      - hodnota: "/vid"
+    parametry:
+      - hodnota: "/$vid"
         typ: path
     # opakovani get pro final response priklad
     opakovani:
       pocet: 5
       #nebo
       #statusOk: true
-
   - id: 3
     poradi: 3
     metoda: PUT
@@ -60,11 +61,11 @@ sekvence:
     uri: posts
     req:
       #nacteni id z res krok1
-      id: vid
+      id: $vid
       title: mujPost
       body: blabol na druhou
       #nateni user z ciselniku
-      userId: value1
+      userId: $value1
   - id: 4
     poradi: 4
     metoda: DELETE
@@ -73,11 +74,16 @@ sekvence:
   - id: 5
     poradi: 1
     metoda: GET
-    nazev: comments k postu
-    uri: posts/vid/comments
+    nazev: comments
+    uri: comments
+    res:
+      postId: $vpostid
+
   - id: 6
-    poradi: 1
+    poradi: 2
     metoda: GET
+    nazev: nacti prvni post
+    uri: posts/$vpostid
 
 monitor:
   server: localhost
@@ -90,16 +96,18 @@ monitor:
     hodnota: 1
     jendotka: hodina
   jednotlive:
-    id: 1
-    metoda: GET
-    nazev: posts
-    uri: posts
-    # nacteni idecka osoby z ciselnik v ciselniky
-    parameter: "/value1"
-
+    - id: 1
+      metoda: GET
+      nazev: posts
+      uri: posts
+      # nacteni idecka osoby z ciselnik v ciselniky
+      parametry:
+        - hodnota: /$value1
+          typ: path
+#umozni davat do requestu/parametru ciselnikove hodnoty
 ciselniky:
-  value1:
-    method: get
-    URL: "https://jsonplaceholder.typicode.com/users"
+  - nazev: $value1
+    metoda: get
+    url: "https://jsonplaceholder.typicode.com/users"
     atribut: id
     pole: prvni

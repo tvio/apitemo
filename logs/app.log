@@ -1,2 +1,271 @@
 2025-01-31 14:43:18,136 - my_logger - INFO - The value of a is 5
 2025-01-31 14:45:38,025 - my_logger - INFO - The value of a is 5
+2025-02-02 12:45:37,427 - my_logger - ERROR - Failed to load configuration file: [Errno 2] No such file or directory: 'apiconfigs\\config.yaml'
+2025-02-02 12:45:37,428 - my_logger - INFO - Loaded configuration: None
+2025-02-02 12:50:22,951 - my_logger - ERROR - Failed to load configuration file: 8 validation errors for APIConfig
+jednotlive.0.poradi
+  Field required [type=missing, input_value={'id': 1, 'metoda': 'GET'...alue1', 'typ': 'path'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+jednotlive.1.poradi
+  Field required [type=missing, input_value={'id': 2, 'metoda': 'POST...l', 'userId': 'value1'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': 'vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.1.poradi
+  Field required [type=missing, input_value={'id': 2, 'metoda': 'GET'...pakovani': {'pocet': 5}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+sekvence.5.nazev
+  Field required [type=missing, input_value={'id': 6, 'poradi': 1, 'metoda': 'GET'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+sekvence.5.uri
+  Field required [type=missing, input_value={'id': 6, 'poradi': 1, 'metoda': 'GET'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...'parameter': '/value1'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 12:50:22,961 - my_logger - INFO - Loaded configuration: None
+2025-02-02 20:22:16,105 - my_logger - ERROR - Failed to load configuration file: 6 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': 'vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.1.poradi
+  Field required [type=missing, input_value={'id': 2, 'metoda': 'GET'...pakovani': {'pocet': 5}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+sekvence.5.nazev
+  Field required [type=missing, input_value={'id': 6, 'poradi': 1, 'metoda': 'GET'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+sekvence.5.uri
+  Field required [type=missing, input_value={'id': 6, 'poradi': 1, 'metoda': 'GET'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...'parameter': '/value1'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 20:22:16,108 - my_logger - INFO - Loaded configuration: None
+2025-02-02 20:22:45,498 - my_logger - ERROR - Failed to load configuration file: 5 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': 'vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.5.nazev
+  Field required [type=missing, input_value={'id': 6, 'poradi': 1, 'metoda': 'GET'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+sekvence.5.uri
+  Field required [type=missing, input_value={'id': 6, 'poradi': 1, 'metoda': 'GET'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...'parameter': '/value1'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 20:22:45,500 - my_logger - INFO - Loaded configuration: None
+2025-02-02 20:25:21,525 - my_logger - ERROR - Failed to load configuration file: 5 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': 'vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.5.nazev
+  Field required [type=missing, input_value={'id': 6, 'poradi': 1, 'metoda': 'GET'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+sekvence.5.uri
+  Field required [type=missing, input_value={'id': 6, 'poradi': 1, 'metoda': 'GET'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...'parameter': '/value1'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 20:25:21,527 - my_logger - INFO - Loaded configuration: None
+2025-02-02 20:47:00,446 - my_logger - ERROR - Failed to load configuration file: 4 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': '$vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.4.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'postId': '$vpostid', 'pole': 'prvni'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...parameter': '/$value1'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 20:47:00,448 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:17:58,446 - my_logger - ERROR - Failed to load configuration file: 4 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': '$vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.4.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'postId': '$vpostid', 'pole': 'prvni'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...parameter': '/$value1'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:17:58,448 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:20:46,332 - my_logger - ERROR - Failed to load configuration file: 5 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': '$vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.1.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$vid', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.4.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'postId': '$vpostid', 'pole': 'prvni'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...parametry': '/$value1'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:20:46,335 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:21:40,783 - my_logger - ERROR - Failed to load configuration file: 5 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': '$vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.1.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$vid', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.4.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'postId': '$vpostid', 'pole': 'prvni'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...lue1', 'typ': 'path'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:21:40,786 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:25:24,343 - my_logger - ERROR - Failed to load configuration file: 5 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': '$vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.1.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$vid', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.4.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'postId': '$vpostid', 'pole': 'prvni'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...lue1', 'typ': 'path'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:25:24,348 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:26:32,584 - my_logger - ERROR - Failed to load configuration file: 5 validation errors for APIConfig
+jednotlive.0.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$value1', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': '$vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.1.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$vid', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.4.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'postId': '$vpostid', 'pole': 'prvni'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...lue1', 'typ': 'path'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:26:32,587 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:29:20,655 - my_logger - ERROR - Failed to load configuration file: 5 validation errors for APIConfig
+jednotlive.0.parametry.0.typ
+  Input should be an instance of ParamTypEnum [type=is_instance_of, input_value='path', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': '$vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.1.parametry
+  Input should be a valid dictionary or instance of Parameters [type=model_type, input_value=[{'hodnota': '/$vid', 'typ': 'path'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.4.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'postId': '$vpostid', 'pole': 'prvni'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...lue1', 'typ': 'path'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:29:20,658 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:29:46,613 - my_logger - ERROR - Failed to load configuration file: 5 validation errors for APIConfig
+jednotlive.0.parametry.0.typ
+  Input should be an instance of ParamTypEnum [type=is_instance_of, input_value='path', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
+sekvence.0.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'id': '$vid'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+sekvence.1.parametry.0.typ
+  Input should be an instance of ParamTypEnum [type=is_instance_of, input_value='path', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
+sekvence.4.res
+  Input should be a valid dictionary or instance of Response [type=model_type, input_value=[{'postId': '$vpostid', 'pole': 'prvni'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...lue1', 'typ': 'path'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:29:46,615 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:33:36,455 - my_logger - ERROR - Failed to load configuration file: 7 validation errors for APIConfig
+jednotlive.0.parametry.0.typ
+  Input should be an instance of ParamTypEnum [type=is_instance_of, input_value='path', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
+sekvence.0.req
+  Input should be a valid list [type=list_type, input_value={'title': 'mujPost', 'bod...ol', 'userId': 'value1'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+sekvence.0.res
+  Input should be a valid list [type=list_type, input_value={'id': '$vid'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+sekvence.1.parametry.0.typ
+  Input should be an instance of ParamTypEnum [type=is_instance_of, input_value='path', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
+sekvence.2.req
+  Input should be a valid list [type=list_type, input_value={'id': '$vid', 'title': '...u', 'userId': '$value1'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+sekvence.4.res
+  Input should be a valid list [type=list_type, input_value={'postId': '$vpostid'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...lue1', 'typ': 'path'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:33:36,458 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:42:15,526 - my_logger - ERROR - Failed to load configuration file: 3 validation errors for APIConfig
+jednotlive.0.parametry.0.typ
+  Input should be an instance of ParamTypEnum [type=is_instance_of, input_value='path', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
+sekvence.1.parametry.0.typ
+  Input should be an instance of ParamTypEnum [type=is_instance_of, input_value='path', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...lue1', 'typ': 'path'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:42:15,528 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:45:14,807 - my_logger - ERROR - Failed to load configuration file: 1 validation error for APIConfig
+monitor
+  Input should be a valid list [type=list_type, input_value={'server': 'localhost', '...lue1', 'typ': 'path'}]}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/list_type
+2025-02-02 21:45:14,807 - my_logger - INFO - Loaded configuration: None
+2025-02-02 21:53:16,512 - my_logger - ERROR - Validation error: [{'type': 'list_type', 'loc': ('monitor',), 'msg': 'Input should be a valid list', 'input': {'server': 'localhost', 'odesilatel': 'franta.jetel@sukl.cz', 'emaily': ['tomas.hajek@sukl.cz papa.novak@sukl.cz'], 'pocetVad': 2, 'interval': {'hodnota': 1, 'jendotka': 'hodina'}, 'jednotlive': {'id': 1, 'metoda': 'GET', 'nazev': 'posts', 'uri': 'posts', 'parametry': [{'hodnota': '/$value1', 'typ': 'path'}]}}, 'url': 'https://errors.pydantic.dev/2.10/v/list_type'}]
+2025-02-02 21:53:16,513 - my_logger - ERROR - Failed to load configuration.
+2025-02-02 21:54:34,117 - my_logger - ERROR - Validation error: [{'type': 'list_type', 'loc': ('monitor',), 'msg': 'Input should be a valid list', 'input': {'server': 'localhost', 'odesilatel': 'franta.jetel@sukl.cz', 'emaily': ['tomas.hajek@sukl.cz papa.novak@sukl.cz'], 'pocetVad': 2, 'interval': {'hodnota': 1, 'jendotka': 'hodina'}, 'jednotlive': {'id': 1, 'metoda': 'GET', 'nazev': 'posts', 'uri': 'posts', 'parametry': [{'hodnota': '/$value1', 'typ': 'path'}]}}, 'url': 'https://errors.pydantic.dev/2.10/v/list_type'}]
+2025-02-02 21:54:34,118 - my_logger - ERROR - Failed to load configuration.
+2025-02-02 21:56:32,490 - my_logger - ERROR - Validation error: [{'type': 'list_type', 'loc': ('monitor',), 'msg': 'Input should be a valid list', 'input': {'server': 'localhost', 'odesilatel': 'franta.jetel@sukl.cz', 'emaily': ['tomas.hajek@sukl.cz papa.novak@sukl.cz'], 'pocetVad': 2, 'interval': {'hodnota': 1, 'jendotka': 'hodina'}, 'jednotlive': {'id': 1, 'metoda': 'GET', 'nazev': 'posts', 'uri': 'posts', 'parametry': [{'hodnota': '/$value1', 'typ': 'path'}]}}, 'url': 'https://errors.pydantic.dev/2.10/v/list_type'}]
+2025-02-02 21:56:32,491 - my_logger - ERROR - Failed to load configuration.
+2025-02-02 21:57:22,801 - my_logger - ERROR - Validation error: [{'type': 'list_type', 'loc': ('monitor',), 'msg': 'Input should be a valid list', 'input': {'server': 'localhost', 'odesilatel': 'franta.jetel@sukl.cz', 'emaily': ['tomas.hajek@sukl.cz papa.novak@sukl.cz'], 'pocetVad': 2, 'interval': {'hodnota': 1, 'jendotka': 'hodina'}, 'jednotlive': [{'id': 1, 'metoda': 'GET', 'nazev': 'posts', 'uri': 'posts', 'parametry': [{'hodnota': '/$value1', 'typ': 'path'}]}]}, 'url': 'https://errors.pydantic.dev/2.10/v/list_type'}]
+2025-02-02 21:57:22,802 - my_logger - ERROR - Failed to load configuration.
+2025-02-02 21:59:15,972 - my_logger - ERROR - Validation error: [{'type': 'missing', 'loc': ('monitor', 'interval', 'jednotka'), 'msg': 'Field required', 'input': {'hodnota': 1, 'jendotka': 'hodina'}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}]
+2025-02-02 21:59:15,973 - my_logger - ERROR - Failed to load configuration.
+2025-02-02 22:00:13,724 - my_logger - INFO - Loaded configuration: id=1 nazev='test01' cert=False prostredi='test' url='https://jsonplaceholder.typicode.com/' jednotlive=[Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None), Jednotlive(id=2, metoda='POST', nazev='posts', uri='posts', parametry=None, req=Request(title='mujPost', body='blabol', userId='$value1'), res=None)] sekvence=[Sekvence(id=1, poradi=1, metoda='POST', nazev='posts', uri='posts', req=Request(title='mujPost', body='blabol', userId='value1'), res=Response(id='$vid'), parametry=None, opakovani=None), Sekvence(id=2, poradi=2, metoda='GET', nazev='posts', uri='posts', req=None, res=None, parametry=[Parameters(typ='path', hodnota='/$vid', popis=None)], opakovani=Opakovani(pocet=5, statusOk=None)), Sekvence(id=3, poradi=3, metoda='PUT', nazev='posts', uri='posts', req=Request(id='$vid', title='mujPost', body='blabol na druhou', userId='$value1'), res=None, parametry=None, opakovani=None), Sekvence(id=4, poradi=4, metoda='DELETE', nazev='posts', uri='posts/vid', req=None, res=None, parametry=None, opakovani=None), Sekvence(id=5, poradi=1, metoda='GET', nazev='comments', uri='comments', req=None, res=Response(postId='$vpostid'), parametry=None, opakovani=None), Sekvence(id=6, poradi=2, metoda='GET', nazev='nacti prvni post', uri='posts/$vpostid', req=None, res=None, parametry=None, opakovani=None)] monitor=Monitor(server='localhost', odesilatel='franta.jetel@sukl.cz', emaily=['tomas.hajek@sukl.cz papa.novak@sukl.cz'], pocetVad=2, interval=Interval(hodnota=1, jendotka='hodina'), jednotlive=[Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None)]) ciselniky=[Ciselniky(nazev='$value1', metoda='get', url='https://jsonplaceholder.typicode.com/users', atribut='id', pole='prvni')]
+2025-02-02 22:00:52,313 - my_logger - INFO - Loaded configuration: id=1 nazev='test01' cert=False prostredi='test' url='https://jsonplaceholder.typicode.com/' jednotlive=[Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None), Jednotlive(id=2, metoda='POST', nazev='posts', uri='posts', parametry=None, req=Request(title='mujPost', body='blabol', userId='$value1'), res=None)] sekvence=[Sekvence(id=1, poradi=1, metoda='POST', nazev='posts', uri='posts', req=Request(title='mujPost', body='blabol', userId='value1'), res=Response(id='$vid'), parametry=None, opakovani=None), Sekvence(id=2, poradi=2, metoda='GET', nazev='posts', uri='posts', req=None, res=None, parametry=[Parameters(typ='path', hodnota='/$vid', popis=None)], opakovani=Opakovani(pocet=5, statusOk=None)), Sekvence(id=3, poradi=3, metoda='PUT', nazev='posts', uri='posts', req=Request(id='$vid', title='mujPost', body='blabol na druhou', userId='$value1'), res=None, parametry=None, opakovani=None), Sekvence(id=4, poradi=4, metoda='DELETE', nazev='posts', uri='posts/vid', req=None, res=None, parametry=None, opakovani=None), Sekvence(id=5, poradi=1, metoda='GET', nazev='comments', uri='comments', req=None, res=Response(postId='$vpostid'), parametry=None, opakovani=None), Sekvence(id=6, poradi=2, metoda='GET', nazev='nacti prvni post', uri='posts/$vpostid', req=None, res=None, parametry=None, opakovani=None)] monitor=Monitor(server='localhost', odesilatel='franta.jetel@sukl.cz', emaily=['tomas.hajek@sukl.cz papa.novak@sukl.cz'], pocetVad=2, interval=Interval(hodnota=1, jendotka='hodina'), jednotlive=[Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None)]) ciselniky=[Ciselniky(nazev='$value1', metoda='get', url='https://jsonplaceholder.typicode.com/users', atribut='id', pole='prvni')]
+2025-02-02 22:00:52,315 - my_logger - INFO - Configuration ID: [Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None), Jednotlive(id=2, metoda='POST', nazev='posts', uri='posts', parametry=None, req=Request(title='mujPost', body='blabol', userId='$value1'), res=None)]
+2025-02-02 22:01:04,401 - my_logger - INFO - Loaded configuration: id=1 nazev='test01' cert=False prostredi='test' url='https://jsonplaceholder.typicode.com/' jednotlive=[Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None), Jednotlive(id=2, metoda='POST', nazev='posts', uri='posts', parametry=None, req=Request(title='mujPost', body='blabol', userId='$value1'), res=None)] sekvence=[Sekvence(id=1, poradi=1, metoda='POST', nazev='posts', uri='posts', req=Request(title='mujPost', body='blabol', userId='value1'), res=Response(id='$vid'), parametry=None, opakovani=None), Sekvence(id=2, poradi=2, metoda='GET', nazev='posts', uri='posts', req=None, res=None, parametry=[Parameters(typ='path', hodnota='/$vid', popis=None)], opakovani=Opakovani(pocet=5, statusOk=None)), Sekvence(id=3, poradi=3, metoda='PUT', nazev='posts', uri='posts', req=Request(id='$vid', title='mujPost', body='blabol na druhou', userId='$value1'), res=None, parametry=None, opakovani=None), Sekvence(id=4, poradi=4, metoda='DELETE', nazev='posts', uri='posts/vid', req=None, res=None, parametry=None, opakovani=None), Sekvence(id=5, poradi=1, metoda='GET', nazev='comments', uri='comments', req=None, res=Response(postId='$vpostid'), parametry=None, opakovani=None), Sekvence(id=6, poradi=2, metoda='GET', nazev='nacti prvni post', uri='posts/$vpostid', req=None, res=None, parametry=None, opakovani=None)] monitor=Monitor(server='localhost', odesilatel='franta.jetel@sukl.cz', emaily=['tomas.hajek@sukl.cz papa.novak@sukl.cz'], pocetVad=2, interval=Interval(hodnota=1, jendotka='hodina'), jednotlive=[Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None)]) ciselniky=[Ciselniky(nazev='$value1', metoda='get', url='https://jsonplaceholder.typicode.com/users', atribut='id', pole='prvni')]
+2025-02-02 22:01:04,403 - my_logger - INFO - Jednotlive: [Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None), Jednotlive(id=2, metoda='POST', nazev='posts', uri='posts', parametry=None, req=Request(title='mujPost', body='blabol', userId='$value1'), res=None)]
+2025-02-02 22:01:10,577 - my_logger - INFO - Jednotlive: [Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None), Jednotlive(id=2, metoda='POST', nazev='posts', uri='posts', parametry=None, req=Request(title='mujPost', body='blabol', userId='$value1'), res=None)]
+2025-02-02 22:01:59,297 - my_logger - INFO - Jednotlive: 1
+2025-02-02 22:02:54,393 - my_logger - INFO - monitor: server='localhost' odesilatel='franta.jetel@sukl.cz' emaily=['tomas.hajek@sukl.cz papa.novak@sukl.cz'] pocetVad=2 interval=Interval(hodnota=1, jendotka='hodina') jednotlive=[Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None)]
