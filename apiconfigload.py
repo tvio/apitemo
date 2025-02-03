@@ -61,20 +61,24 @@ class Ciselniky(BaseModel):
     metoda: str
     url : str
     atribut: str
-    pole: Optional[str] = None
+    limit: Optional[int] = None
     class Config:
         arbitrary_types_allowed = True
 
+class Cert(BaseModel):
+    nazevSouboru: str
+    heslo: str
+    
 class APIConfig(BaseModel):
     id: int
     nazev: str
-    cert: bool
+    cert: Optional[Cert]
     prostredi : str
     url:str
-    jednotlive: List[Jednotlive]
+    jednotlive: Optional[List[Jednotlive]]
     #upravit sekvence na objekty zrusit id
-    sekvence: List[Sekvence]
-    monitor: Monitor
+    sekvence: Optional[ List[Sekvence]]
+    monitor: Optional[Monitor]
     ciselniky: List['Ciselniky']
     class Config:
         arbitrary_types_allowed = True
@@ -102,21 +106,3 @@ class APIConfigLoader:
             return None
 
 
-# Example usage:
-if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(description='Run the application with specified logging level.')
-    parser.add_argument('--log-level', default='INFO', help='Set the logging level (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL)')
-    args = parser.parse_args()
-
-    # Set the logging level based on the command-line argument
-    logger.setLevel(args.log_level.upper())
-
-    loader = APIConfigLoader()
-    config = loader.load_config('exampleConfig.yaml')
-    if config:
-        #logger.info(f"Loaded configuration: {config}")
-        logger.info(f"monitor: {config.monitor}")
-    else:
-        logger.error("Failed to load configuration.")

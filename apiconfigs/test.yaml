@@ -1,0 +1,112 @@
+# projekt
+nazev: "test01"
+id: 1
+# v pripade cert  je to object s filename a password
+# prostredi "dev" ,"test" ,"prod"
+prostredi: "test"
+url: https://jsonplaceholder.typicode.com/
+jednotlive:
+  - id: 1
+    metoda: GET
+    nazev: posts
+    uri: posts
+    # nacteni idecka osoby z ciselnik v ciselniky
+    parametry:
+      - hodnota: /$value1
+        typ: path
+
+  - id: 2
+    metoda: POST
+    nazev: posts
+    uri: posts
+    req:
+      title: mujPost
+      body: blabol
+      # nacteni idecka usera z ciselniku v ciselniky
+      userId: $value1
+
+sekvence:
+  - id: 1
+    poradi: 1
+    metoda: POST
+    nazev: posts
+    uri: posts
+    req:
+      title: mujPost
+      body: blabol
+      # naxteni usera z ciselniku
+      userId: value1
+    # ulozi ID z response
+    res:
+      id: $vid
+  - id: 2
+    poradi: 2
+    metoda: GET
+    nazev: posts
+    uri: posts
+    # nacteni idecka osoby z ciselnik v ciselniky
+    parametry:
+      - hodnota: "/$vid"
+        typ: path
+    # opakovani get pro final response priklad
+    opakovani:
+      pocet: 5
+      #nebo
+      #statusOk: true
+  - id: 3
+    poradi: 3
+    metoda: PUT
+    nazev: posts
+    uri: posts
+    req:
+      #nacteni id z res krok1
+      id: $vid
+      title: mujPost
+      body: blabol na druhou
+      #nateni user z ciselniku
+      userId: $value1
+  - id: 4
+    poradi: 4
+    metoda: DELETE
+    nazev: posts
+    uri: posts/vid
+  - id: 5
+    poradi: 1
+    metoda: GET
+    nazev: comments
+    uri: comments
+    res:
+      postId: $vpostid
+
+  - id: 6
+    poradi: 2
+    metoda: GET
+    nazev: nacti prvni post
+    uri: posts/$vpostid
+
+monitor:
+  server: localhost
+  odesilatel: franta.jetel@sukl.cz
+  emaily:
+    - tomas.hajek@sukl.cz
+      papa.novak@sukl.cz
+  pocetVad: 2
+  interval:
+    hodnota: 1
+    jendotka: hodina
+  jednotlive:
+    - id: 1
+      metoda: GET
+      nazev: posts
+      uri: posts
+      # nacteni idecka osoby z ciselnik v ciselniky
+      parametry:
+        - hodnota: /$value1
+          typ: path
+#umozni davat do requestu/parametru ciselnikove hodnoty
+ciselniky:
+  - nazev: $value1
+    metoda: get
+    url: "https://jsonplaceholder.typicode.com/users"
+    atribut: id
+    limit: 1
