@@ -269,3 +269,19 @@ monitor
 2025-02-02 22:01:10,577 - my_logger - INFO - Jednotlive: [Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None), Jednotlive(id=2, metoda='POST', nazev='posts', uri='posts', parametry=None, req=Request(title='mujPost', body='blabol', userId='$value1'), res=None)]
 2025-02-02 22:01:59,297 - my_logger - INFO - Jednotlive: 1
 2025-02-02 22:02:54,393 - my_logger - INFO - monitor: server='localhost' odesilatel='franta.jetel@sukl.cz' emaily=['tomas.hajek@sukl.cz papa.novak@sukl.cz'] pocetVad=2 interval=Interval(hodnota=1, jendotka='hodina') jednotlive=[Jednotlive(id=1, metoda='GET', nazev='posts', uri='posts', parametry=[Parameters(typ='path', hodnota='/$value1', popis=None)], req=None, res=None)]
+2025-02-04 14:24:38,379 - my_logger - ERROR - Configuration file not found: apiconfigs\exampleConfig.yaml
+2025-02-04 14:24:38,380 - my_logger - ERROR - Failed to load configuration.
+2025-02-04 14:27:29,462 - my_logger - ERROR - Configuration file not found: apiconfigs\exampleConfig.yaml
+2025-02-04 14:27:29,463 - my_logger - ERROR - Failed to load configuration.
+2025-02-04 14:29:01,843 - my_logger - ERROR - Configuration file not found: apiconfigs\exampleConfig.yaml
+2025-02-04 14:29:01,844 - my_logger - ERROR - Failed to load configuration.
+2025-02-04 14:30:58,373 - my_logger - ERROR - Configuration file not found: apiconfigs\exampleConfig.yaml
+2025-02-04 14:30:58,374 - my_logger - ERROR - Failed to load configuration.
+2025-02-04 14:35:20,511 - my_logger - ERROR - Configuration file not found: apiconfigs\apiconfigs\hsztest.yaml
+2025-02-04 14:35:20,517 - my_logger - ERROR - Failed to load configuration from apiconfigs\hsztest.yaml
+2025-02-04 14:35:20,519 - my_logger - ERROR - Configuration file not found: apiconfigs\apiconfigs\test.yaml
+2025-02-04 14:35:20,520 - my_logger - ERROR - Failed to load configuration from apiconfigs\test.yaml
+2025-02-04 14:37:04,839 - my_logger - ERROR - Validation error: [{'type': 'missing', 'loc': ('cert', 'nazevSouboru'), 'msg': 'Field required', 'input': {'filename': 'cert.pfx', 'password': 'heslo'}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}, {'type': 'missing', 'loc': ('cert', 'heslo'), 'msg': 'Field required', 'input': {'filename': 'cert.pfx', 'password': 'heslo'}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}, {'type': 'missing', 'loc': ('sekvence', 5, 'metoda'), 'msg': 'Field required', 'input': {'id': 6, 'poradi': 1}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}, {'type': 'missing', 'loc': ('sekvence', 5, 'nazev'), 'msg': 'Field required', 'input': {'id': 6, 'poradi': 1}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}, {'type': 'missing', 'loc': ('sekvence', 5, 'uri'), 'msg': 'Field required', 'input': {'id': 6, 'poradi': 1}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}, {'type': 'int_type', 'loc': ('monitor', 'jednotlive', 0), 'msg': 'Input should be a valid integer', 'input': {'id': 1}, 'url': 'https://errors.pydantic.dev/2.10/v/int_type'}]
+2025-02-04 14:37:04,841 - my_logger - ERROR - Failed to load configuration from apiconfigs\hsztest.yaml
+2025-02-04 14:37:04,870 - my_logger - ERROR - Validation error: [{'type': 'int_type', 'loc': ('monitor', 'jednotlive', 0), 'msg': 'Input should be a valid integer', 'input': {'id': 1, 'metoda': 'GET', 'nazev': 'posts', 'uri': 'posts', 'parametry': [{'hodnota': '/$value1', 'typ': 'path'}]}, 'url': 'https://errors.pydantic.dev/2.10/v/int_type'}]
+2025-02-04 14:37:04,873 - my_logger - ERROR - Failed to load configuration from apiconfigs\test.yaml

@@ -1,8 +1,8 @@
 from config import logger
 import os
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, ValidationError, model_validator
 from pydantic_yaml import parse_yaml_raw_as
-from typing import List,Optional
+from typing import List, Optional
 
 
 class Request(BaseModel):
@@ -13,6 +13,7 @@ class Response(BaseModel):
         extra = 'allow' 
 class Parameters(BaseModel):
     typ: str
+    nazev: Optional[str] = None
     hodnota: str
     popis: Optional[str] = None
     class Config:
@@ -26,6 +27,7 @@ class Jednotlive(BaseModel):
     parametry: Optional[List[Parameters]] = None
     req: Optional[Request] = None
     res: Optional[Response] = None
+    limit: Optional[int] = None
 
 class Opakovani(BaseModel):
     pocet: Optional[int] = None
@@ -42,6 +44,7 @@ class Sekvence(BaseModel):
     res: Optional[Response] = None
     parametry: Optional[List[Parameters]] = None
     opakovani: Optional[Opakovani] = None
+    limit: Optional[int] = None
     class Config:
         arbitrary_types_allowed = True
 
@@ -53,8 +56,11 @@ class Monitor(BaseModel):
     odesilatel: str
     emaily: List[str] 
     pocetVad: int
+    # v sec
+    casOdpovedi: Optional[int] = None
     interval: Interval
-    jednotlive: List[Jednotlive]
+    jednotlive: Optional[List[int]]= None
+    Sekvence: Optional[List[int]]= None
 
 class Ciselniky(BaseModel):
     nazev: str
@@ -72,22 +78,26 @@ class Cert(BaseModel):
 class APIConfig(BaseModel):
     id: int
     nazev: str
-    cert: Optional[Cert]
+    cert: Optional[Cert] = None
     prostredi : str
     url:str
-    jednotlive: Optional[List[Jednotlive]]
-    #upravit sekvence na objekty zrusit id
-    sekvence: Optional[ List[Sekvence]]
-    monitor: Optional[Monitor]
-    ciselniky: List['Ciselniky']
+    jednotlive: Optional[List[Jednotlive]] = None
+    sekvence: Optional[ List[Sekvence]] = None
+    monitor: Optional[Monitor] = None
+    ciselniky: Optional[ List['Ciselniky']] = None
     class Config:
         arbitrary_types_allowed = True
+    @model_validator(mode='after')
+    def check_at_least_one(cls, values):
+        if not any([values.get('jednotlive'), values.get('sekvence'), values.get('monitor')]):
+            raise ValueError('At least one of jednotlive, sekvence, or monitor must be provided')
+        return values
+
 class APIConfigLoader:
     def __init__(self, directory='apiconfigs'):
         self.directory = directory
 
-    def load_config(self, filename):
-        filepath = os.path.join(self.directory, filename)
+    def load_config(self, filepath):
         logger.debug(f"Loading configuration file: {filepath}")
         if not os.path.exists(filepath):
             logger.error(f"Configuration file not found: {filepath}")
@@ -104,5 +114,4 @@ class APIConfigLoader:
         except Exception as e:
             logger.error(f"Failed to load configuration file: {e}")
             return None
-
 

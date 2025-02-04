@@ -15,95 +15,99 @@ jednotlive:
     nazev: status sluzby
     uri: status
 
-  - id: 2
-    metoda: POST
-    nazev: posts
-    uri: posts
-    req:
-      title: mujPost
-      body: blabol
-      # nacteni idecka usera z ciselniku v ciselniky
-      userId: $value1
+  # - id: 2
+  #   metoda: POST
+  #   nazev: posts
+  #   uri: posts
+  #   req:
+  #     title: mujPost
+  #     body: blabol
+  #     # nacteni idecka usera z ciselniku v ciselniky
+  #     userId: $value1
 
 sekvence:
+  # sekvence pro postnuti hlaseni a nacteni seznamu hlaseni
   - id: 1
     poradi: 1
-    metoda: POST
-    nazev: posts
-    uri: posts
-    req:
-      title: mujPost
-      body: blabol
-      # naxteni usera z ciselniku
-      userId: value1
-    # ulozi ID z response
+    metoda: GET
+    nazev: nacte prvni kod pracoviste ze seznamu danemho certu
+    uri:
+      pracoviste
+      # ulozi kodu pracoviste z response
+      # automaticky verze prvni z pole
     res:
-      id: $vid
+      kodPracoviste: $kodPracoviste
   - id: 2
     poradi: 2
     metoda: GET
-    nazev: posts
-    uri: posts
-    # nacteni idecka osoby z ciselnik v ciselniky
-    parametry:
-      - hodnota: "/$vid"
-        typ: path
-    # opakovani get pro final response priklad
-    opakovani:
-      pocet: 5
-      #nebo
-      #statusOk: true
+    nazev: vybere prvni platny pozadavek na hlaseni
+    uri: pozadovane-lp-na-hlaseni
+    # nacteni uuid a kod suklu platneho kodu suklu pro OOP
+    parametery:
+      - typ: query
+        nazev: typ
+        hodnota: 2
+      - typ: query
+        nazev: neplatne
+        hodnota: false
+    res:
+      idPozadavku: $idPozadavku
+      kodSUKL: $kodSUKL
+    limit: 10
   - id: 3
     poradi: 3
-    metoda: PUT
-    nazev: posts
-    uri: posts
+    metoda: POST
+    nazev: podam OOP haseni na ulozeny kod a pracoviste
+    uri: hlaseni
     req:
-      #nacteni id z res krok1
-      id: $vid
-      title: mujPost
-      body: blabol na druhou
-      #nateni user z ciselniku
-      userId: $value1
+      #nacteni kodpracoviste a kodSUKL z predochuzich requestu
+      idPozadavku: $idPozadavku
+      pocetBaleni: 199
+      datumCasSkladovychZasob: $timestamp
+      kodPracoviste: $kodPracoviste
+      nemocnicniZasoby: false
+      sw:
+        nazev: apitemo
+        verze: 1
+        vyrobce: tomas hajek
+    # natcteni seznamu hlaseni
   - id: 4
     poradi: 4
-    metoda: DELETE
-    nazev: posts
-    uri: posts/vid
+    metoda: GET
+    nazev: seznam hlaseni pro kod pracoviste
+    uri: hlaseni
+    parametry:
+      - typ: path
+        hodnota: /$kodPracoviste
+    limit: 10
   - id: 5
+    # nacteni seznamu hlaseni distributoru pro lekarny
     poradi: 1
     metoda: GET
-    nazev: comments
-    uri: comments
-    res:
-      postId: $vpostid
-
+    nazev: hlaseni distributoru pro lekarny
+    # nacte vsechny hlaseni distributoru pro lekarny ke kodu suklu z predchoziho requestu
+    uri: hlaseni-distributoru
+    parametry:
+      - typ: path
+        hodnota: /$kodSUKL
+    limit: 10
+    #Dodelat sekvenci pro merge vcetne nactteni kodu pracoviste a pozadakvu
   - id: 6
-    poradi: 2
-    metoda: GET
-    nazev: nacti prvni post
-    uri: posts/$vpostid
+    poradi: 1
 
 monitor:
   server: localhost
-  odesilatel: franta.jetel@sukl.cz
+  odesilatel: ei-noreply@sukl.cz
   emaily:
     - tomas.hajek@sukl.cz
-      papa.novak@sukl.cz
   pocetVad: 2
   interval:
     hodnota: 1
     jendotka: hodina
   jednotlive:
     - id: 1
-      metoda: GET
-      nazev: posts
-      uri: posts
-      # nacteni idecka osoby z ciselnik v ciselniky
-      parametry:
-        - hodnota: /$value1
-          typ: path
-#umozni davat do requestu/parametru ciselnikove hodnoty
+
+#umozni davat do requestu/parametru ciselnikove hodnoty z jinych api
 ciselniky:
   - nazev: $value1
     metoda: get
