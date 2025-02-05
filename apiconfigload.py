@@ -34,9 +34,8 @@ class Opakovani(BaseModel):
     statusOk: Optional[bool] = None
     class Config:
         arbitrary_types_allowed = True
-class Sekvence(BaseModel):
+class Kroky(BaseModel):
     id: int
-    poradi: int
     metoda: str
     nazev: str
     uri: str
@@ -48,6 +47,11 @@ class Sekvence(BaseModel):
     class Config:
         arbitrary_types_allowed = True
 
+class Sekvence(BaseModel):
+    id: int
+    kroky: List[Kroky]
+    class Config:
+        arbitrary_types_allowed = True
 class Interval(BaseModel):
     hodnota: int
     jendotka: str
