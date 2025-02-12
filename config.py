@@ -27,6 +27,7 @@ args = parser.parse_args()
 
 # Set the logging level based on the command-line argument
 set_logging_level(args.log_level)
+print('Nastaveny log level na >> ' + args.log_level)
 # logger.debug('This is a debug message')
 # logger.info('This is an info message')
 # logger.warning('This is a warning message')

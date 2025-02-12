@@ -1,4 +1,4 @@
-Predelat yaml a pydantic sekvence pole s kroky v kazde sekvenci
+Udelat modul pro praci s konfigem
 Udelat autoamticky limit 1 pokud je vraceno pole
 monitor na cas, napriklad monitorovani prehledu leciv tydenni davky
 nacteni swaggeru pro predvyplneni

@@ -1,6 +1,6 @@
 # projekt
-nazev: "hsztest"
-id: 2
+nazev: "hsztest2"
+id: 3
 # v pripade cert true je to object s filename a password
 # nacteni pres cert lekarny
 cert:
@@ -28,7 +28,7 @@ jednotlive:
 sekvence:
   - id: 1
     nazev:
-      Nacteni kodu pracoviste, vyber platneho pozadavku a postnuti hlaseni, podani hlaseni, vycet hlaseni pro kod pracoviste
+      x
       # sekvence pro postnuti hlaseni a nacteni seznamu hlaseni
     kroky:
       - id: 1
@@ -83,7 +83,7 @@ sekvence:
 
         # nacteni seznamu hlaseni distributoru pro lekarny
   - id: 2
-    nazev: hlaseni distributoru pro lekarny. Bere si to kod suklu ze sekvence 1.
+    nazev: x
     kroky:
       - id: 1
         metoda: GET
