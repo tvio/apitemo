@@ -24,8 +24,13 @@ class Jednotlive(BaseModel):
     uri: str
     parametry: Optional[List[Parameters]] = None
     req: Optional[Request] = None
-    res: Optional[Response] = None  # Fixed: Removed extra bracket.
+    res: Optional[Response] = None
     limit: Optional[int] = None
+    api_config_url: Optional[str] = None
+
+    @property
+    def url(self):
+        return f"{self.api_config_url}{self.uri}"
 
 class Opakovani(BaseModel):
     pocet: Optional[int] = None
@@ -42,8 +47,13 @@ class Kroky(BaseModel):
     parametry: Optional[List[Parameters]] = None
     opakovani: Optional[Opakovani] = None
     limit: Optional[int] = None
+    api_config_url: Optional[str] = None
     class Config:
         arbitrary_types_allowed = True
+
+    @property
+    def url(self):
+        return f"{self.api_config_url}{self.uri}"
 
 class Sekvence(BaseModel):
     id: int
@@ -97,3 +107,14 @@ class APIConfig(BaseModel):
         if not any([instance.jednotlive, instance.sekvence, instance.monitor]):
             raise ValueError('At least one of jednotlive, sekvence, or monitor must be provided')
         return instance
+
+    def __init__(self, **data):
+        super().__init__(**data)
+        # Set the api_config_url for each Jednotlive and Kroky
+        if self.jednotlive:
+            for item in self.jednotlive:
+                item.api_config_url = self.url
+        if self.sekvence:
+            for seq in self.sekvence:
+                for step in seq.kroky:
+                    step.api_config_url = self.url

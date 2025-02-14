@@ -1,5 +1,5 @@
 # projekt
-nazev: "hsztest"
+nazev: "Hsztest"
 id: 2
 # v pripade cert true je to object s filename a password
 # nacteni pres cert lekarny
@@ -12,7 +12,7 @@ url: https://testapi.sukl.cz/hsz/v1/
 jednotlive:
   - id: 1
     metoda: GET
-    nazev: status sluzby
+    nazev: Status sluzby
     uri: status
 
   # - id: 2
