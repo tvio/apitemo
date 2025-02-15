@@ -48,18 +48,32 @@ class ApiClient:
             logger.debug("Certificate loaded successfully")
 
 
-    def doReq(self, htmlOperace, operace, data={}):
-        logger.info(f"Metoda doReq na URL>> {self.url + operace}")
+    def doReq(self, htmlOperace, url, data={}, headers={}):
+        logger.info(f"Metoda doReq na URL>> {url}")
         logger.info(f"Metoda doReq request>> {data}")
         try:
-            if htmlOperace == 'get':
-                res = self.session.get(self.url + operace, cert=self.cert, timeout=self.timeout)
-            elif htmlOperace == 'post':
-                res = self.session.post(self.url + operace, cert=self.cert, timeout=self.timeout, json=data)
-            elif htmlOperace == 'put':
-                res = self.session.put(self.url + operace, cert=self.cert, timeout=self.timeout, json=data)
-            elif htmlOperace == 'delete':
-                res = self.session.delete(self.url + operace, cert=self.cert, timeout=self.timeout)
+            if htmlOperace == 'GET':
+                res = self.session.get(url , 
+                                     cert=self.cert, 
+                                     timeout=self.timeout,
+                                     headers=headers)
+            elif htmlOperace == 'POST':
+                res = self.session.post(url, 
+                                      cert=self.cert, 
+                                      timeout=self.timeout, 
+                                      json=data,
+                                      headers=headers)
+            elif htmlOperace == 'PUT':
+                res = self.session.put(url, 
+                                     cert=self.cert, 
+                                     timeout=self.timeout, 
+                                     json=data,
+                                     headers=headers)
+            elif htmlOperace == 'DELETE':
+                res = self.session.delete(url, 
+                                        cert=self.cert, 
+                                        timeout=self.timeout,
+                                        headers=headers)
             logger.info(f"Metoda doReq response>> {res.status_code}, Response>>{res.text}")
             return res
         except ConnectionError:

@@ -1,15 +1,76 @@
-from apiclient import doreq, auth
+from apiclient import ApiClient
 
 class APILogicController:
-    def __init__(self, configs):
-        self.configs = configs
+    def __init__(self, config):
+        self.config = config
+        self.api_client = ApiClient(
+            id=self.config.id,
+            url=self.config.url,
+            nazev=self.config.nazev,
+            prostredi=self.config.prostredi,
+            certFile=self.config.cert.nazevSouboru,
+            password=self.config.cert.heslo,
+            
+        )
+        self.api_client.auth()
         
+    def vyrobaRequestu(self, req):
+        if req:
+            # Převede Pydantic model na dict, který requests.post/put
+            # automaticky převede na JSON
+            return req.model_dump()
+        return {}
         
-    def callJednotlive(self, response):    
+    def callJednotlive(self, jednotlive):
+        self.jednotlive = jednotlive
+        result = self.parametry(self.jednotlive.parametry, self.jednotlive.url)
+        self.url = result['final_url']
+        self.headers = result['headers']
+        
+        # Použijeme novou metodu pro přípravu dat
+        req_con = self.vyrobaRequestu(self.jednotlive.req)
+            
+        self.res = self.api_client.doReq(
+            self.jednotlive.metoda, 
+            self.url, 
+            data=req_con,
+            headers=self.headers
+        )
+        return self.res
 
     def some_method(self):
         # Example usage of doreq and auth methods
         response = doreq()
         auth_response = auth()
         # ...use response and auth_response as needed...
-
+    def parametry(self, parametry, url):
+        self.base_url = url
+        self.path_url = self.base_url
+        self.query_url = ""
+        self.headers = {}
+        
+        # Nejdřív zpracujeme path parametry
+        for parametr in parametry:
+            if parametr.typ == 'path':
+                self.path_url += f"/{parametr.nazev}/{parametr.hodnota}"
+                
+        # Zpracujeme query parametry
+        for i, parametr in enumerate(parametry):
+            if parametr.typ == 'query':
+                # První query parametr začíná ?, další používají &
+                delimiter = '?' if i == 0 else '&'
+                self.query_url += f"{delimiter}{parametr.nazev}={parametr.hodnota}"
+                
+        # Nakonec zpracujeme hlavičky
+        for parametr in parametry:
+            if parametr.typ == 'header':
+                self.headers[parametr.nazev] = parametr.hodnota
+                
+        # Sestavíme finální URL
+        self.final_url = self.base_url + self.path_url + self.query_url
+                
+        return {
+          
+            'final_url': self.final_url,
+            'headers': self.headers
+        }

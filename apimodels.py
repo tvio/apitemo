@@ -1,23 +1,31 @@
 from pydantic import BaseModel, model_validator
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 
 class Request(BaseModel):
-    class Config:
-        extra = 'allow'
+    """Model pro obecný request"""
+    model_config = {
+        'extra': 'allow'  # Povolí dodatečné atributy
+    }
 
 class Response(BaseModel):
-    class Config:
-        extra = 'allow'
+    """Model pro obecnou response"""
+    model_config = {
+        'extra': 'allow'
+    }
 
 class Parameters(BaseModel):
+    """Model pro parametry API volání"""
     typ: str
     nazev: Optional[str] = None
     hodnota: str
     popis: Optional[str] = None
-    class Config:
-        arbitrary_types_allowed = True
+
+    model_config = {
+        'arbitrary_types_allowed': True
+    }
 
 class Jednotlive(BaseModel):
+    """Model pro jednotlivé API volání"""
     id: int
     metoda: str
     nazev: str
@@ -29,7 +37,7 @@ class Jednotlive(BaseModel):
     api_config_url: Optional[str] = None
 
     @property
-    def url(self):
+    def url(self) -> str:
         return f"{self.api_config_url}{self.uri}"
 
 class Opakovani(BaseModel):
