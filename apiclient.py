@@ -9,12 +9,23 @@ from contextlib import contextmanager
 from config import logger
 from dataclasses import dataclass
 from typing import Optional
+import os
 
 
 
 @contextmanager
 def pfx_to_pem(pfx_path, pfx_password):
-    with open(pfx_path, 'rb') as pfx_file:
+    # Get the absolute path to the cert directory relative to the script location
+    cert_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cert')
+    
+    # Ensure cert directory exists
+    if not os.path.exists(cert_dir):
+        os.makedirs(cert_dir)
+    
+    # Create full path to the pfx file
+    full_pfx_path = os.path.join(cert_dir, pfx_path)
+    
+    with open(full_pfx_path, 'rb') as pfx_file:
         pfx_data = pfx_file.read()
     private_key, main_cert, add_certs = load_key_and_certificates(pfx_data, pfx_password.encode('utf-8'))
     with tempfile.NamedTemporaryFile(delete=False) as t_pem:
@@ -43,7 +54,7 @@ class ApiClient:
                 
 
     def auth(self):
-           with pfx_to_pem(self.cert, self.url) as c:
+           with pfx_to_pem(self.certFile, self.password) as c:
             self.cert = c
             logger.debug("Certificate loaded successfully")
 

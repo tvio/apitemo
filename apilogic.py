@@ -8,11 +8,12 @@ class APILogicController:
             url=self.config.url,
             nazev=self.config.nazev,
             prostredi=self.config.prostredi,
-            certFile=self.config.cert.nazevSouboru,
-            password=self.config.cert.heslo,
-            
+            certFile=self.config.cert.nazevSouboru if self.config.cert else None,
+            password=self.config.cert.heslo if self.config.cert else None,
         )
-        self.api_client.auth()
+        # Only call auth() if certificate configuration exists
+        if self.config.cert:
+            self.api_client.auth()
         
     def vyrobaRequestu(self, req):
         if req:
@@ -38,11 +39,8 @@ class APILogicController:
         )
         return self.res
 
-    def some_method(self):
-        # Example usage of doreq and auth methods
-        response = doreq()
-        auth_response = auth()
-        # ...use response and auth_response as needed...
+    def callSekvence(self):
+        pass
     def parametry(self, parametry, url):
         self.base_url = url
         self.path_url = self.base_url

@@ -1,6 +1,7 @@
 from apiconfigload import APIConfigLoader
 from config import logger
 from  utils import clear_screen, ft
+from apilogic import APILogicController
 
 def display_menu():
     clear_screen()
@@ -13,44 +14,51 @@ def display_menu():
 def volbaOperaci(config):
     clear_screen()
     print(ft("Vyber operaci nebo sekvenci API ")+ft(config.nazev, "green"))
-    option_number = 1
     options = {}
 
     if config.jednotlive:
         print(ft("Vyčet operací:"))
         for operace in config.jednotlive:
-            print(f"ft({option_number}) {operace.nazev} ){operace.url}")
-            options[option_number] = operace
-            option_number += 1
+            print(f"{ft(str(operace.id) + ')')} {ft(operace.nazev)} {operace.url}")
+            options[operace.id] = ('jednotlive', operace)
+            print(f"Debug: Added jednotlive operation with id {operace.id}")
 
     if config.sekvence:
         print(ft("Vyčet sekvencí:"))
         for sekvence in config.sekvence:
-            print(ft(f"{option_number}) {sekvence.nazev}"))
+            print(ft(f"{sekvence.id}) {sekvence.nazev}"))
             for krok in sekvence.kroky:
-                print(f"{option_number}.{krok.id}) {krok.url}")
-            options[option_number] = sekvence
-            option_number += 1
-    print (f"Ostatni:")
-    print(f"{option_number}). Zpět do hlavního menu")
-    options[option_number] = "exit"
+                print(f"{sekvence.id}.{krok.id}) {krok.url}")
+            options[sekvence.id] = ('sekvence', sekvence)
+            print(f"Debug: Added sekvence with id {sekvence.id}")
 
-    choice = input(f"Enter your choice (1-{option_number} or 'exit'): ").strip().lower()
-    if choice.isdigit():
-        choice = int(choice)
-        if choice in options:
-            if options[choice] == "exit":
-                return
+    print(ft("Ostatni:"))
+    exit_option = max(options.keys()) + 1 if options else 1
+    print(f"{exit_option}). Zpět do hlavního menu")
+    options[exit_option] = ('exit', None)
+    
+    print(f"Debug: Available options: {options}")
+
+    while True:
+        choice = input(f"Enter your choice (1-{exit_option} or 'exit'): ").strip().lower()
+        if choice == "exit":
+            return None, None
+        
+        try:
+            choice = int(choice)
+            print(f"Debug: User chose {choice}")
+            if choice in options.keys():
+                option_type, selected_option = options[choice]
+                print(f"Debug: Found option type: {option_type}")
+                if option_type == 'exit':
+                    return None, None
+                else:
+                    print(f"Selected {option_type}: {selected_option.nazev}")
+                    return option_type, selected_option
             else:
-                selected_option = options[choice]
-                print(f"Selected option: {selected_option.nazev}")
-                # Process the selected option
-        else:
-            print("Invalid choice. Please try again.")
-    elif choice == "exit":
-        return
-    else:
-        print("Invalid input. Please enter a number or 'back'.")
+                print("Invalid choice. Please enter a number from the menu.")
+        except ValueError:
+            print("Invalid input. Please enter a number or 'exit'.")
 
 def get_user_choice():
     choice = input(f"Enter your choice (1-{len(configs) + 2} or 'exit'): ").strip().lower()
@@ -66,9 +74,18 @@ def main():
             choice = int(choice)
             if 1 <= choice <= len(configs):
                 selected_config = configs[choice - 1]
-                print(f"Selected configuration: {selected_config.nazev}")
-                volbaOperaci(selected_config)
-                # Process the selected configuration
+                while True:  # New inner loop for operations menu
+                    print(f"Selected configuration: {selected_config.nazev}")
+                    operation_type, selected_operation = volbaOperaci(selected_config)
+                    if operation_type:
+                        print(f"Processing {operation_type}: {selected_operation.nazev}")
+                        apiClient = APILogicController(selected_config)
+                        if operation_type == 'jednotlive':
+                            apiClient.callJednotlive(selected_operation)
+                        #elif operation_type == 'sekvence':
+                         #   apiClient.callSekvence(selected_operation)
+                    else:  # User selected exit or invalid input
+                        break  # Return to main menu
             elif choice == len(configs) + 1:
                 print("Reloading configurations...")
                 configs = loader.load_all_configs()
@@ -88,5 +105,4 @@ def main():
 if __name__ == "__main__":
     loader = APIConfigLoader()
     configs = loader.load_all_configs()
-    
     main()

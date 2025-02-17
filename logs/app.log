@@ -567,3 +567,32 @@ monitor
 2025-02-14 14:53:53,877 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
 2025-02-14 14:54:48,732 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
 2025-02-14 14:54:48,756 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 15:20:08,636 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-17 15:20:08,780 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 15:27:52,838 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-17 15:27:52,965 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 15:29:45,158 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-17 15:29:45,182 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 15:30:51,065 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-17 15:30:51,088 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 15:37:01,297 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-17 15:37:01,353 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 16:44:57,434 - ERROR - Failed to load configuration file apiconfigs\hsztest.yaml: while scanning a simple key
+  in "<file>", line 93, column 9
+could not find expected ':'
+  in "<file>", line 94, column 20
+2025-02-17 16:44:57,453 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 16:46:19,896 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-17 16:46:19,909 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 16:47:43,932 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-17 16:47:43,960 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 16:48:13,468 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-17 16:48:13,502 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 16:58:15,774 - ERROR - Validation error in apiconfigs\hsztest.yaml: [{'type': 'missing', 'loc': ('cert', 'heslo'), 'msg': 'Field required', 'input': {'nazevSouboru': 'dis.pfx'}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}]
+2025-02-17 16:58:15,798 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 17:09:34,012 - ERROR - Validation error in apiconfigs\hsztest.yaml: [{'type': 'missing', 'loc': ('cert', 'heslo'), 'msg': 'Field required', 'input': {'nazevSouboru': 'dis.pfx'}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}]
+2025-02-17 17:09:34,027 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 17:11:53,131 - ERROR - Validation error in apiconfigs\hsztest.yaml: [{'type': 'missing', 'loc': ('cert', 'heslo'), 'msg': 'Field required', 'input': {'nazevSouboru': 'dis.pfx'}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}]
+2025-02-17 17:11:53,144 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-17 17:12:53,046 - ERROR - Validation error in apiconfigs\hsztest.yaml: [{'type': 'missing', 'loc': ('cert', 'heslo'), 'msg': 'Field required', 'input': {'nazevSouboru': 'dis.pfx'}, 'url': 'https://errors.pydantic.dev/2.10/v/missing'}]
+2025-02-17 17:12:53,062 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
