@@ -5,6 +5,7 @@ id: 2
 # nacteni pres cert lekarny
 cert:
   nazevSouboru: dis.pfx
+  heslo: Kobylamamalybok01*
 # prostredi "dev" ,"test" ,"prod"
 prostredi: "test"
 url: https://testapi.sukl.cz/hsz/v1/
@@ -25,7 +26,7 @@ jednotlive:
   #     userId: $value1
 
 sekvence:
-  - id: 1
+  - id: 2
     nazev:
       Nacteni kodu pracoviste, vyber platneho pozadavku a postnuti hlaseni, podani hlaseni, vycet hlaseni pro kod pracoviste
       # sekvence pro postnuti hlaseni a nacteni seznamu hlaseni
@@ -81,7 +82,7 @@ sekvence:
         limit: 10
 
         # nacteni seznamu hlaseni distributoru pro lekarny
-  - id: 2
+  - id: 3
     nazev: Hlaseni distributoru pro lekarny. Pouzije kod suklu ze sekvence 1.
     kroky:
       - id: 1

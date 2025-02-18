@@ -19,16 +19,6 @@
       "justMyCode": true
     },
     {
-      "name": "Python: Menu",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${workspaceFolder}/menu.py",
-      "console": "integratedTerminal",
-      "env": {
-        "FLASK_ENV": "dev"
-      }
-    },
-    {
       "name": "Launch Chrome against localhost",
       "type": "chrome",
       "request": "launch",
@@ -39,9 +29,10 @@
       "name": "Python: Menu Debug",
       "type": "python",
       "request": "launch",
-      "program": "menu.py",
+      "program": "${workspaceFolder}/menu.py",
       "console": "integratedTerminal",
       "justMyCode": true,
+      "args": ["--log-level", "DEBUG"],
       "env": {
         "PYTHONPATH": "${workspaceFolder}"
       }

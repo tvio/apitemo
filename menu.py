@@ -12,32 +12,34 @@ def display_menu():
     print(f"{len(configs) + 2}. Exit")
 
 def volbaOperaci(config):
-    clear_screen()
     print(ft("Vyber operaci nebo sekvenci API ")+ft(config.nazev, "green"))
     options = {}
+    display_number = 1
 
     if config.jednotlive:
         print(ft("Vyčet operací:"))
         for operace in config.jednotlive:
-            print(f"{ft(str(operace.id) + ')')} {ft(operace.nazev)} {operace.url}")
-            options[operace.id] = ('jednotlive', operace)
-            print(f"Debug: Added jednotlive operation with id {operace.id}")
+            print(f"{ft(str(display_number) + ')')} {ft(operace.nazev)} {operace.url}")
+            options[display_number] = ('jednotlive', operace)
+            logger.debug(f"Added jednotlive operation with id {display_number}")
+            display_number += 1
 
     if config.sekvence:
         print(ft("Vyčet sekvencí:"))
         for sekvence in config.sekvence:
-            print(ft(f"{sekvence.id}) {sekvence.nazev}"))
+            print(ft(f"{display_number}) {sekvence.nazev}"))
             for krok in sekvence.kroky:
-                print(f"{sekvence.id}.{krok.id}) {krok.url}")
-            options[sekvence.id] = ('sekvence', sekvence)
-            print(f"Debug: Added sekvence with id {sekvence.id}")
+                print(f"{display_number}.{krok.id}) {krok.url}")
+            options[display_number] = ('sekvence', sekvence)
+            logger.debug(f"Added sekvence with id {display_number}")
+            display_number += 1
 
     print(ft("Ostatni:"))
-    exit_option = max(options.keys()) + 1 if options else 1
+    exit_option = display_number
     print(f"{exit_option}). Zpět do hlavního menu")
     options[exit_option] = ('exit', None)
     
-    print(f"Debug: Available options: {options}")
+    logger.debug(f"Available options: {options}")
 
     while True:
         choice = input(f"Enter your choice (1-{exit_option} or 'exit'): ").strip().lower()
@@ -46,10 +48,10 @@ def volbaOperaci(config):
         
         try:
             choice = int(choice)
-            print(f"Debug: User chose {choice}")
-            if choice in options.keys():
+            logger.debug(f"User chose {choice}")
+            if choice in options:
                 option_type, selected_option = options[choice]
-                print(f"Debug: Found option type: {option_type}")
+                logger.debug(f"Found option type: {option_type}")
                 if option_type == 'exit':
                     return None, None
                 else:
