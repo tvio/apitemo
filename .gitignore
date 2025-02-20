@@ -1,28 +1,52 @@
-# Virtual Environment
-venv/
-env/
-.env/
-.venv/
+# Logs
+logs/
+*.log
 
-# Python cache files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-.pytest_cache/
-.mypy_cache/
-.coverage
-htmlcov/
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# IDE specific files
+# Virtual Environment
+.env
+.venv
+venv/
+ENV/
+
+# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
 
+# Python cache files
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
 # Distribution / packaging
-dist/
-build/
 *.egg-info/
+
+# Environment variables
+.env.local
 
 # Environment variables
 .env

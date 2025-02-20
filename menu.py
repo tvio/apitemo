@@ -2,6 +2,7 @@ from apiconfigload import APIConfigLoader
 from config import logger
 from  utils import clear_screen, ft
 from apilogic import APILogicController
+import sys
 
 def display_menu():
     clear_screen()
@@ -43,8 +44,8 @@ def volbaOperaci(config):
     while True:
         choice = input(f"Enter your choice (1-{exit_option} or 'exit'): ").strip().lower()
         if choice == "exit":
-             print("Exiting...")
-             break
+            print("Exiting...")
+            sys.exit(0)
         
         try:
             choice = int(choice)
@@ -84,8 +85,6 @@ def main():
                         apiClient = APILogicController(selected_config)
                         if operation_type == 'jednotlive':
                             apiClient.callJednotlive(selected_operation)
-                        #elif operation_type == 'sekvence':
-                         #   apiClient.callSekvence(selected_operation)
                     else:  # User selected exit or invalid input
                         break  # Return to main menu
             elif choice == len(configs) + 1:
@@ -95,7 +94,7 @@ def main():
                 print("Invalid choice. Please try again.")
         elif choice == "exit":
             print("Exiting...")
-            break
+            sys.exit(0)
         else:
             print("Invalid input. Please enter a number or 'exit'.")
 
