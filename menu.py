@@ -9,7 +9,6 @@ def display_menu():
     for index, config in enumerate(configs, start=1):
         print(f"{index}. {config.nazev}")
     print(f"{len(configs) + 1}. Reload configurations")
-    print(f"{len(configs) + 2}. Exit")
 
 def volbaOperaci(config):
     print(ft("Vyber operaci nebo sekvenci API ")+ft(config.nazev, "green"))
@@ -44,7 +43,8 @@ def volbaOperaci(config):
     while True:
         choice = input(f"Enter your choice (1-{exit_option} or 'exit'): ").strip().lower()
         if choice == "exit":
-            return None, None
+             print("Exiting...")
+             break
         
         try:
             choice = int(choice)
@@ -63,7 +63,7 @@ def volbaOperaci(config):
             print("Invalid input. Please enter a number or 'exit'.")
 
 def get_user_choice():
-    choice = input(f"Enter your choice (1-{len(configs) + 2} or 'exit'): ").strip().lower()
+    choice = input(f"Enter your choice (1-{len(configs) + 1} or 'exit'): ").strip().lower()
     return choice
 
 def main():
@@ -91,9 +91,6 @@ def main():
             elif choice == len(configs) + 1:
                 print("Reloading configurations...")
                 configs = loader.load_all_configs()
-            elif choice == len(configs) + 2 or choice == "exit":
-                print("Exiting...")
-                break
             else:
                 print("Invalid choice. Please try again.")
         elif choice == "exit":

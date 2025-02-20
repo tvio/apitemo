@@ -61,7 +61,8 @@ class ApiClient:
 
     def doReq(self, htmlOperace, url, data={}, headers={}):
         logger.info(f"Metoda doReq na URL>> {url}")
-        logger.info(f"Metoda doReq request>> {data}")
+        if data:
+            logger.info(f"Metoda doReq request>> {data}")
         try:
             if htmlOperace == 'GET':
                 res = self.session.get(url , 

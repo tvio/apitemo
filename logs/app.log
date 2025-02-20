@@ -650,3 +650,24 @@ could not find expected ':'
 2025-02-18 14:52:00,843 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
 2025-02-18 14:52:59,328 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
 2025-02-18 14:52:59,341 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-20 08:46:31,649 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-20 08:46:31,660 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-20 08:48:19,956 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-20 08:48:19,969 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-20 08:48:23,643 - INFO - Metoda doReq na URL>> https://testapi.sukl.cz/hsz/v1/status
+2025-02-20 08:48:23,674 - INFO - Metoda doReq request>> {}
+2025-02-20 08:48:23,818 - INFO - Metoda doReq response>> 200, Response>>{"status":"ok","cas":"2025-02-20T08:48:23.873554+01:00"}
+2025-02-20 08:49:53,334 - INFO - Metoda doReq na URL>> https://testapi.sukl.cz/hsz/v1/status
+2025-02-20 08:49:53,335 - INFO - Metoda doReq request>> {}
+2025-02-20 08:49:53,395 - INFO - Metoda doReq response>> 200, Response>>{"status":"ok","cas":"2025-02-20T08:49:53.456577+01:00"}
+2025-02-20 08:50:11,149 - INFO - Metoda doReq na URL>> https://testapi.sukl.cz/hsz/v1/status
+2025-02-20 08:50:11,149 - INFO - Metoda doReq request>> {}
+2025-02-20 08:50:11,188 - INFO - Metoda doReq response>> 200, Response>>{"status":"ok","cas":"2025-02-20T08:50:11.248892+01:00"}
+2025-02-20 09:11:35,536 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-20 09:11:35,550 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-20 09:11:48,740 - INFO - Metoda doReq na URL>> https://testapi.sukl.cz/hsz/v1/status
+2025-02-20 09:11:48,799 - INFO - Metoda doReq response>> 200, Response>>{"status":"ok","cas":"2025-02-20T09:11:48.837044+01:00"}
+2025-02-20 09:42:35,781 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-20 09:42:35,801 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml
+2025-02-20 09:43:58,717 - INFO - Loaded configuration from file>> apiconfigs\hsztest.yaml
+2025-02-20 09:43:58,728 - INFO - Loaded configuration from file>> apiconfigs\hszttest2fileToLoad.yaml

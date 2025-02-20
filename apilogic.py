@@ -24,9 +24,13 @@ class APILogicController:
         
     def callJednotlive(self, jednotlive):
         self.jednotlive = jednotlive
-        result = self.parametry(self.jednotlive.parametry, self.jednotlive.url)
-        self.url = result['final_url']
-        self.headers = result['headers']
+        if jednotlive.parametry:
+            result = self.parametry(self.jednotlive.parametry, self.jednotlive.url)
+            self.url = result['final_url']
+            self.headers = result['headers']
+        else:
+            self.url = self.jednotlive.url
+            self.headers = {}
         
         # Použijeme novou metodu pro přípravu dat
         req_con = self.vyrobaRequestu(self.jednotlive.req)
