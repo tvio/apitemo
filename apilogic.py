@@ -5,7 +5,6 @@ from apimodels import Promenna
 class APILogicController:
     def __init__(self, config):
         self.config = config
-        self.promenne = Promenna()
         self.api_client = ApiClient(
             id=self.config.id,
             url=self.config.url,
@@ -83,6 +82,27 @@ class APILogicController:
         }
     def ulozPromenne(self, name: str, value: Any):
         """Uloží proměnnou do objektu"""
-        setattr(self.promenne, name, value)
+        setattr(self.config.promenne, name, value)
+
+    def najdiPromenne(self, data: dict) -> None:
+        """Prochází data a hledá parametry označené $ """
+        if not isinstance(data, dict):
+            return
+
+        for key, value in data.items():
+            if isinstance(value, str) and value.startswith('$'):
+                # Remove $ from parameter name
+                param_name = value[1:]
+                # Store parameter with None value if it doesn't exist yet
+                if not hasattr(self.config.promenne, param_name):
+                    self.ulozPromenne(param_name, None)
+            elif isinstance(value, dict):
+                # Recursively search nested dictionaries
+                self.najdiPromenne(value)
+            elif isinstance(value, list):
+                # Search through list items
+                for item in value:
+                    if isinstance(item, dict):
+                        self.najdiPromenne(item)
 
   

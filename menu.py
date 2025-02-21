@@ -1,7 +1,7 @@
 from apiconfigload import APIConfigLoader
 from config import logger
-from  utils import clear_screen, ft
-from apimodels import APILogicController
+from utils import clear_screen, ft
+from apilogic import APILogicController
 import sys
 
 def display_menu():

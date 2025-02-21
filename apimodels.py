@@ -99,6 +99,9 @@ class Cert(BaseModel):
 
 class Promenna(BaseModel):
     """Model pro proměnné"""
+    nazev: Optional[str] = None
+    hodnota: Optional[Any] = None
+   
     model_config = {
         'extra': 'allow'  # Allow dynamic field creation
     }
@@ -113,6 +116,9 @@ class APIConfig(BaseModel):
     sekvence: Optional[List[Sekvence]] = None
     monitor: Optional[Monitor] = None
     ciselniky: Optional[List[Ciselniky]] = None
+    # neni soucasti yaml configu ale je to objekt pro ulozeni promennych
+    promenne: Optional[Promenna] = None
+    
     class Config:
         arbitrary_types_allowed = True
 
@@ -124,6 +130,8 @@ class APIConfig(BaseModel):
 
     def __init__(self, **data):
         super().__init__(**data)
+        if self.promenne is None:
+            self.promenne = Promenna()
         # Set the api_config_url for each Jednotlive and Kroky
         if self.jednotlive:
             for item in self.jednotlive:
