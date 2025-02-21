@@ -35,7 +35,9 @@
       "args": ["--log-level", "DEBUG"],
       "env": {
         "PYTHONPATH": "${workspaceFolder}"
-      }
+      },
+      "restart": true,
+      "watcherPatterns": ["${workspaceFolder}/**/*.py"]
     }
   ]
 }

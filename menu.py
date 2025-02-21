@@ -1,7 +1,7 @@
 from apiconfigload import APIConfigLoader
 from config import logger
 from  utils import clear_screen, ft
-from apilogic import APILogicController
+from apimodels import APILogicController
 import sys
 
 def display_menu():
@@ -82,9 +82,11 @@ def main():
                     operation_type, selected_operation = volbaOperaci(selected_config)
                     if operation_type:
                         print(f"Processing {operation_type}: {selected_operation.nazev}")
-                        apiClient = APILogicController(selected_config)
+                        apiClient = APILogicController(config=selected_config)
                         if operation_type == 'jednotlive':
                             apiClient.callJednotlive(selected_operation)
+                        elif operation_type == 'sekvence':
+                            apiClient.callSekvence(selected_operation)
                     else:  # User selected exit or invalid input
                         break  # Return to main menu
             elif choice == len(configs) + 1:

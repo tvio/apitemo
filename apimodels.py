@@ -97,6 +97,12 @@ class Cert(BaseModel):
     nazevSouboru: str
     heslo: str
 
+class Promenna(BaseModel):
+    """Model pro proměnné"""
+    model_config = {
+        'extra': 'allow'  # Allow dynamic field creation
+    }
+
 class APIConfig(BaseModel):
     id: int
     nazev: str

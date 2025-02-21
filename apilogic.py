@@ -1,8 +1,11 @@
 from apiclient import ApiClient
+from typing import Any, Dict, Optional
+from apimodels import Promenna
 
 class APILogicController:
     def __init__(self, config):
         self.config = config
+        self.promenne = Promenna()
         self.api_client = ApiClient(
             id=self.config.id,
             url=self.config.url,
@@ -43,8 +46,10 @@ class APILogicController:
         )
         return self.res
 
-    def callSekvence(self):
-        pass
+    def callSekvence(self,sekvence):
+        self.sekvence = sekvence
+        for krok in self.sekvence.kroky:
+            self.callJednotlive(krok)   
     def parametry(self, parametry, url):
         self.base_url = url
         self.path_url = self.base_url
@@ -76,3 +81,8 @@ class APILogicController:
             'final_url': self.final_url,
             'headers': self.headers
         }
+    def ulozPromenne(self, name: str, value: Any):
+        """Uloží proměnnou do objektu"""
+        setattr(self.promenne, name, value)
+
+  
