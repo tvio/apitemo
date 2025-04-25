@@ -23,6 +23,7 @@ def volbaOperaci(config):
             options[display_number] = ('jednotlive', operace)
             logger.debug(f"Added jednotlive operation with id {display_number}")
             display_number += 1
+        print()  # Add empty line after jednotlive section
 
     if config.sekvence:
         print(ft("Vyčet sekvencí:"))
@@ -70,6 +71,7 @@ def get_user_choice():
 def main():
     global configs
     while True:
+        
         display_menu()
         choice = get_user_choice()
         
@@ -77,16 +79,23 @@ def main():
             choice = int(choice)
             if 1 <= choice <= len(configs):
                 selected_config = configs[choice - 1]
+                first_time = True
                 while True:  # New inner loop for operations menu
-                    print(f"Selected configuration: {selected_config.nazev}")
+                    print()
+                    if first_time:
+                        print(ft(f"Selected configuration: {selected_config.nazev}", "green"))
+                        first_time = False
                     operation_type, selected_operation = volbaOperaci(selected_config)
-                    if operation_type:
-                        print(f"Processing {operation_type}: {selected_operation.nazev}")
+                    if operation_type and selected_operation:
+                        print()
+                        print(ft(f"Processing {operation_type}: {selected_operation.nazev}", "green"))
                         apiClient = APILogicController(config=selected_config)
                         if operation_type == 'jednotlive':
                             apiClient.callJednotlive(selected_operation)
+                            input("\nPress Enter to continue...")
                         elif operation_type == 'sekvence':
                             apiClient.callSekvence(selected_operation)
+                            input("\nPress Enter to continue...")
                     else:  # User selected exit or invalid input
                         break  # Return to main menu
             elif choice == len(configs) + 1:

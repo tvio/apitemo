@@ -14,86 +14,72 @@ jednotlive:
     metoda: GET
     nazev: Status sluzby
     uri: status
-
-  # - id: 2
-  #   metoda: POST
-  #   nazev: posts
-  #   uri: posts
-  #   req:
-  #     title: mujPost
-  #     body: blabol
-  #     # nacteni idecka usera z ciselniku v ciselniky
-  #     userId: $value1
+  - id: 2
+    metoda: GET
+    nazev: nacte prvni kod pracoviste ze seznamu danemho certu
+    uri: pracoviste
+    # ulozi kodu pracoviste z response
+    # automaticky verze prvni z pole
+    res:
+      kodPracoviste: $kodPracoviste
+  - id: 3
+    metoda: GET
+    nazev: vybere prvni platny pozadavek na hlaseni
+    uri: pozadovane-lp-na-hlaseni
+    # nacteni uuid a kod suklu platneho kodu suklu pro OOP
+    parametery:
+      - typ: query
+        nazev: typ
+        hodnota: 2
+      - typ: query
+        nazev: neplatne
+        hodnota: false
+    res:
+      idPozadavku: $idPozadavku
+      kodSUKL: $kodSUKL
+      limit: 10
+  - id: 4
+    metoda: POST
+    nazev: podam OOP haseni na ulozeny kod a pracoviste
+    uri: hlaseni
+    req:
+      #nacteni kodpracoviste a kodSUKL z predochuzich requestu
+      idPozadavku: $idPozadavku
+      pocetBaleni: 199
+      datumCasSkladovychZasob: $timestamp
+      kodPracoviste: $kodPracoviste
+      nemocnicniZasoby: false
+      sw:
+        nazev: apitemo
+        verze: 1
+        vyrobce: tomas hajek
+  - id: 5
+    metoda: GET
+    nazev: seznam hlaseni pro kod pracoviste
+    uri: hlaseni
+    parametry:
+      - typ: path
+        hodnota: /$kodPracoviste
+    limit: 10
+  - id: 6
+    metoda: GET
+    nazev: hlaseni distributoru pro lekarny
+    uri: hlaseni-distributoru
+    parametry:
+      - typ: path
+        hodnota: /$kodSUKL
+    res:
+      limit: 10
 
 sekvence:
-  - id: 2
-    nazev:
-      Nacteni kodu pracoviste, vyber platneho pozadavku a postnuti hlaseni, podani hlaseni, vycet hlaseni pro kod pracoviste
-      # sekvence pro postnuti hlaseni a nacteni seznamu hlaseni
-    kroky:
-      - id: 1
-        metoda: GET
-        nazev: nacte prvni kod pracoviste ze seznamu danemho certu
-        uri:
-          pracoviste
-          # ulozi kodu pracoviste z response
-          # automaticky verze prvni z pole
-        res:
-          kodPracoviste: $kodPracoviste
-      - id: 2
-        metoda: GET
-        nazev: vybere prvni platny pozadavek na hlaseni
-        uri: pozadovane-lp-na-hlaseni
-        # nacteni uuid a kod suklu platneho kodu suklu pro OOP
-        parametery:
-          - typ: query
-            nazev: typ
-            hodnota: 2
-          - typ: query
-            nazev: neplatne
-            hodnota: false
-        res:
-          idPozadavku: $idPozadavku
-          kodSUKL: $kodSUKL
-        limit: 10
-      - id: 3
-        metoda: POST
-        nazev: podam OOP haseni na ulozeny kod a pracoviste
-        uri: hlaseni
-        req:
-          #nacteni kodpracoviste a kodSUKL z predochuzich requestu
-          idPozadavku: $idPozadavku
-          pocetBaleni: 199
-          datumCasSkladovychZasob: $timestamp
-          kodPracoviste: $kodPracoviste
-          nemocnicniZasoby: false
-          sw:
-            nazev: apitemo
-            verze: 1
-            vyrobce: tomas hajek
-        # natcteni seznamu hlaseni
-      - id: 4
-        metoda: GET
-        nazev: seznam hlaseni pro kod pracoviste
-        uri: hlaseni
-        parametry:
-          - typ: path
-            hodnota: /$kodPracoviste
-        limit: 10
-
-        # nacteni seznamu hlaseni distributoru pro lekarny
+  - id: 1
+    nazev: Nacteni kodu pracoviste, vyber platneho pozadavku a postnuti hlaseni, podani hlaseni, vycet hlaseni pro kod pracoviste
+    # sekvence pro postnuti hlaseni a nacteni seznamu hlaseni
+    kroky: [2,3,4,5]
   - id: 3
-    nazev: Hlaseni distributoru pro lekarny. Pouzije kod suklu ze sekvence 1.
-    kroky:
-      - id: 1
-        metoda: GET
-        nazev: hlaseni distributoru pro lekarny
-        # nacte vsechny hlaseni distributoru pro lekarny ke kodu suklu z predchoziho requestu
-        uri: hlaseni-distributoru
-        parametry:
-          - typ: path
-            hodnota: /$kodSUKL
-        limit: 10
+    nazev: Hlaseni distributoru pro lekarny. Pouzije prvni kod suklu z pozadavku na hlaseni
+    kroky: [3,6]
+      
         #Dodelat sekvenci pro merge vcetne nactteni kodu pracoviste a pozadakvu
 
 monitor:

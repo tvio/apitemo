@@ -23,10 +23,11 @@ class APILogicController:
             # automaticky převede na JSON
             return req.model_dump()
         return {}
-        
-    def callJednotlive(self, jednotlive):
-        self.jednotlive = jednotlive
-        if jednotlive.parametry:
+    
+    
+    def callJednotlive(self, jednotliveId):
+        self.jednotlive = self.config.jednotlive[jednotliveId]
+        if self.jednotlive.parametry:
             result = self.parametry(self.jednotlive.parametry, self.jednotlive.url)
             self.url = result['final_url']
             self.headers = result['headers']
