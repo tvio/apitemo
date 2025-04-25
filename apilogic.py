@@ -84,25 +84,30 @@ class APILogicController:
     def ulozPromenne(self, name: str, value: Any):
         """Uloží proměnnou do objektu"""
         setattr(self.config.promenne, name, value)
-
+    #potrebuji rozlisist parametr v req a v res a v parametru
     def najdiPromenne(self, data: dict) -> None:
         """Prochází data a hledá parametry označené $ """
+        # Check if input is a dictionary, if not return immediately
         if not isinstance(data, dict):
             return
-
+        # Iterate through each key-value pair in the dictionary. To znamena pridat typ (req/res/path/query/header), ulozit value a nazev atributu nebo bez nazvu
         for key, value in data.items():
+            # Check if value is a string and starts with $ (parameter marker)
             if isinstance(value, str) and value.startswith('$'):
-                # Remove $ from parameter name
+                # Extract parameter name by removing $ prefix
                 param_name = value[1:]
-                # Store parameter with None value if it doesn't exist yet
+                # Check if parameter doesn't exist in config.promenne
                 if not hasattr(self.config.promenne, param_name):
+                    # Store parameter with None as initial value
                     self.ulozPromenne(param_name, None)
+            # If value is a nested dictionary, recursively search it
             elif isinstance(value, dict):
-                # Recursively search nested dictionaries
                 self.najdiPromenne(value)
+            # If value is a list, check each item
             elif isinstance(value, list):
-                # Search through list items
+                # Iterate through each item in the list
                 for item in value:
+                    # If item is a dictionary, recursively search it
                     if isinstance(item, dict):
                         self.najdiPromenne(item)
 

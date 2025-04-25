@@ -1,6 +1,7 @@
 # projekt
 nazev: "Hsztest"
 id: 2
+# je potreba vyresit , ze pri volani jednotlive bez sekvence to bude inputovat 
 # v pripade cert true je to object s filename a password
 # nacteni pres cert lekarny
 cert:
