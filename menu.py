@@ -28,9 +28,7 @@ def volbaOperaci(config):
     if config.sekvence:
         print(ft("Vyčet sekvencí:"))
         for sekvence in config.sekvence:
-            print(ft(f"{display_number}) {sekvence.nazev}"))
-            for krok in sekvence.kroky:
-                print(f"{display_number}.{krok.id}) {krok.url}")
+            print(ft(f"{display_number}) {sekvence.nazev} {sekvence.kroky}"))
             options[display_number] = ('sekvence', sekvence)
             logger.debug(f"Added sekvence with id {display_number}")
             display_number += 1
@@ -80,6 +78,7 @@ def main():
             if 1 <= choice <= len(configs):
                 selected_config = configs[choice - 1]
                 first_time = True
+                apiClient = APILogicController(config=selected_config)
                 while True:  # New inner loop for operations menu
                     print()
                     if first_time:
@@ -89,9 +88,10 @@ def main():
                     if operation_type and selected_operation:
                         print()
                         print(ft(f"Processing {operation_type}: {selected_operation.nazev}", "green"))
-                        apiClient = APILogicController(config=selected_config)
+                        
+                        
                         if operation_type == 'jednotlive':
-                            apiClient.callJednotlive(selected_operation)
+                            apiClient.callJednotlive(selected_operation.id)
                             input("\nPress Enter to continue...")
                         elif operation_type == 'sekvence':
                             apiClient.callSekvence(selected_operation)

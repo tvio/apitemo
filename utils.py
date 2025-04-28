@@ -16,12 +16,22 @@ def ft(text, color="black"):
     return f"\033[1;{color_code}m{text}\033[0m"
 
 def clear_screen():
-    # For Windows
-    if os.name == 'nt':
-        os.system('cls')
-    # For macOS and Linux
-    else:
-        os.system('clear')
+    # Only clear the screen if log level is INFO or higher (not DEBUG)
+    try:
+        from config import logger
+        if logger.getEffectiveLevel() > 10:  # 10 is logging.DEBUG
+            # For Windows
+            if os.name == 'nt':
+                os.system('cls')
+            # For macOS and Linux
+            else:
+                os.system('clear')
+    except Exception:
+        # Fallback: if logger is not available, just clear
+        if os.name == 'nt':
+            os.system('cls')
+        else:
+            os.system('clear')
 
 # Example usage:
 if __name__ == "__main__":

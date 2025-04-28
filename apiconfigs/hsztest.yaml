@@ -1,6 +1,7 @@
 # projekt
 nazev: "Hsztest"
 id: 2
+
 # je potreba vyresit , ze pri volani jednotlive bez sekvence to bude inputovat 
 # v pripade cert true je to object s filename a password
 # nacteni pres cert lekarny
@@ -76,10 +77,17 @@ sekvence:
   - id: 1
     nazev: Nacteni kodu pracoviste, vyber platneho pozadavku a postnuti hlaseni, podani hlaseni, vycet hlaseni pro kod pracoviste
     # sekvence pro postnuti hlaseni a nacteni seznamu hlaseni
-    kroky: [2,3,4,5]
+    kroky: 
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
   - id: 3
     nazev: Hlaseni distributoru pro lekarny. Pouzije prvni kod suklu z pozadavku na hlaseni
-    kroky: [3,6]
+    kroky: 
+      - 3
+      - 6
       
         #Dodelat sekvenci pro merge vcetne nactteni kodu pracoviste a pozadakvu
 

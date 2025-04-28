@@ -46,26 +46,27 @@ class Opakovani(BaseModel):
     class Config:
         arbitrary_types_allowed = True
 
-class Kroky(BaseModel):
-    id: int
-    metoda: str
-    uri: str
-    req: Optional[Request] = None
-    res: Optional[Response] = None
-    parametry: Optional[List[Parameters]] = None
-    opakovani: Optional[Opakovani] = None
-    limit: Optional[int] = None
-    api_config_url: Optional[str] = None
-    class Config:
-        arbitrary_types_allowed = True
+# class Kroky(BaseModel):
+#     id: int
+#     metoda: str
+#     uri: str
+#     req: Optional[Request] = None
+#     res: Optional[Response] = None
+#     parametry: Optional[List[Parameters]] = None
+#     opakovani: Optional[Opakovani] = None
+#     limit: Optional[int] = None
+#     api_config_url: Optional[str] = None
+#     class Config:
+#         arbitrary_types_allowed = True
 
-    @property
-    def url(self):
-        return f"{self.api_config_url}{self.uri}"
+#     @property
+#     def url(self):
+#         return f"{self.api_config_url}{self.uri}"
 
+# sekvence nove jen jako pole kroku
 class Sekvence(BaseModel):
     id: int
-    kroky: List[Kroky]   
+    kroky: List[int]   
     nazev: str
 
 class Interval(BaseModel):
@@ -136,7 +137,4 @@ class APIConfig(BaseModel):
         if self.jednotlive:
             for item in self.jednotlive:
                 item.api_config_url = self.url
-        if self.sekvence:
-            for seq in self.sekvence:
-                for step in seq.kroky:
-                    step.api_config_url = self.url
+      

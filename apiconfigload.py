@@ -34,6 +34,6 @@ class APIConfigLoader:
                 config = self.load_config(filepath)
                 if config:
                     configs.append(config)
-                    logger.info(f"Loaded configuration from file>> {filepath}")
-                    logger.debug(f"Loaded configuration>> {config}")
+                    #logger.info(f"Loaded configuration from file>> {filepath}")
+                    #exitlogger.debug(f"Loaded configuration>> {config}")
         return configs
