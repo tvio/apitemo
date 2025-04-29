@@ -6,7 +6,7 @@ id: 2
 # v pripade cert true je to object s filename a password
 # nacteni pres cert lekarny
 cert:
-  nazevSouboru: testdis.pfx
+  nazevSouboru: testlek.pfx
   heslo: Kobylamamalybok01*
 # prostredi "dev" ,"test" ,"prod"
 prostredi: "test"
@@ -39,7 +39,7 @@ jednotlive:
     res:
       idPozadavku: $idPozadavku
       kodSUKL: $kodSUKL
-      limit: 10
+      limit: 5
   - id: 4
     metoda: POST
     nazev: podam OOP haseni na ulozeny kod a pracoviste
@@ -47,13 +47,14 @@ jednotlive:
     req:
       #nacteni kodpracoviste a kodSUKL z predochuzich requestu
       idPozadavku: $idPozadavku
+      #kodSUKL: $kodSUKL
       pocetBaleni: 199
       datumCasSkladovychZasob: $timestamp
       kodPracoviste: $kodPracoviste
       nemocnicniZasoby: false
       sw:
         nazev: apitemo
-        verze: 1
+        verze: 1.23b
         vyrobce: tomas hajek
   - id: 5
     metoda: GET
@@ -62,7 +63,7 @@ jednotlive:
     parametry:
       - typ: path
         hodnota: /$kodPracoviste
-    limit: 10
+    limit: 5
   - id: 6
     metoda: GET
     nazev: hlaseni distributoru pro lekarny
@@ -71,7 +72,7 @@ jednotlive:
       - typ: path
         hodnota: /$kodSUKL
     res:
-      limit: 10
+      limit: 5
 
 sekvence:
   - id: 1
@@ -81,9 +82,8 @@ sekvence:
       - 2
       - 3
       - 4
-      - 5
-      - 6
-  - id: 3
+      - 5      
+  - id: 2
     nazev: Hlaseni distributoru pro lekarny. Pouzije prvni kod suklu z pozadavku na hlaseni
     kroky: 
       - 3

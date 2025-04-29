@@ -10,6 +10,9 @@ from config import logger
 from dataclasses import dataclass
 from typing import Optional
 import os
+from requests import Session
+from utils import ft
+import json
 
 
 
@@ -59,10 +62,10 @@ class ApiClient:
             logger.debug("Certificate loaded successfully")
 
 
-    def doReq(self, htmlOperace, url, data={}, headers={}):
-        logger.info(f"Metoda doReq na URL>> {url}")
-        if data:
-            logger.info(f"Metoda doReq request>> {data}")
+    def doReq(self, htmlOperace, url, data={}, headers={}, limit=10):
+        logger.info(f"{ft('Provedu request')} {htmlOperace} {ft('na URL>>')} {url}")
+        if data != {}:
+            logger.info(f"{ft('Obsah requestu>>')} {data}")
         try:
             if htmlOperace == 'GET':
                 res = self.session.get(url , 
@@ -70,12 +73,24 @@ class ApiClient:
                                      timeout=self.timeout,
                                      headers=headers)
             elif htmlOperace == 'POST':
+                # Ensure data is a dictionary, not a string
+                if isinstance(data, str):
+                    try:
+                        data = json.loads(data)
+                    except json.JSONDecodeError:
+                        pass
                 res = self.session.post(url, 
                                       cert=self.cert, 
                                       timeout=self.timeout, 
                                       json=data,
                                       headers=headers)
             elif htmlOperace == 'PUT':
+                # Ensure data is a dictionary, not a string
+                if isinstance(data, str):
+                    try:
+                        data = json.loads(data)
+                    except json.JSONDecodeError:
+                        pass
                 res = self.session.put(url, 
                                      cert=self.cert, 
                                      timeout=self.timeout, 
@@ -86,23 +101,47 @@ class ApiClient:
                                         cert=self.cert, 
                                         timeout=self.timeout,
                                         headers=headers)
-            logger.info(f"Metoda doReq response>> {res.status_code}, Response>>{res.text}")
+            
+            # Handle response limiting
+            if res.status_code == 200:
+                try:
+                    response_data = res.json()
+                    if isinstance(response_data, dict):
+                        # For dictionary responses, limit list values
+                        limited_data = {}
+                        for key, value in response_data.items():
+                            if isinstance(value, list):
+                                limited_data[key] = value[:limit]
+                            else:
+                                limited_data[key] = value
+                        logger.info(f"{ft('Obsah response>>')} {res.status_code}, Response>>{limited_data}")
+                    elif isinstance(response_data, list):
+                        # For list responses, limit the list
+                        limited_data = response_data[:limit]
+                        logger.info(f"{ft('Obsah response>>')} {res.status_code}, Response>>{limited_data}")
+                    else:
+                        logger.info(f"{ft('Obsah response>>')} {res.status_code}, Response>>{response_data}")
+                except ValueError:
+                    # If JSON parsing fails, log the original response
+                    logger.info(f"{ft('Obsah response>>')} {res.status_code}, Response>>{res.text}")
+            else:
+                logger.info(f"{ft('Obsah response>>')} {res.status_code}, Response>>{res.text}")
             return res
         except ConnectionError:
-            logger.info('ConnectionError: Nelze navazat spojeni')
+            logger.info(f"{ft('ConnectionError:')} Nelze navazat spojeni")
             return CustomResponse('{"error": "Nelze navazat spojeni"}', 503)
         except requests.exceptions.Timeout as err:
             if err.response and err.response.status_code != 500:
-                logger.info(f'Timeout error with response: {err.response.text}')
+                logger.info(f"{ft('Timeout error with response:')} {err.response.text}")
                 return err.response
             elif err.response and err.response.status_code == 500:
-                logger.info('Timeout error: Internal Server Error')
+                logger.info(f"{ft('Timeout error:')} Internal Server Error")
                 return CustomResponse('{"error": "Internal Server Error"}', 500)
         except requests.HTTPError as http_err:
-            logger.debug(f'HTTPError occurred: {http_err}')
+            logger.debug(f"{ft('HTTPError occurred:')} {http_err}")
             return CustomResponse(f'{{"error": "HTTP error occurred: {http_err}"}}', 500)
         except Exception as err:
-            logger.debug(f'An error occurred: {err}')
+            logger.debug(f"{ft('An error occurred:')} {err}")
             return CustomResponse(f'{{"error": "An error occurred: {err}"}}', 500)
 
 
